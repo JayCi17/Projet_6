@@ -15,8 +15,7 @@ fetch('http://localhost:5678/api/works/')
         figure.appendChild(image);
         figure.appendChild(caption);
     })
-})
-.catch(error=>console.error(error));
+});
 
  // Récupérer le conteneur des éléments à trier
 const itemsContainer = document.querySelector('.gallery');
@@ -42,9 +41,6 @@ function afficherToutesLesImages() {
           itemsContainer.appendChild(figure);
         });
       })
-      .catch(error => {
-        console.error('Erreur lors de la récupération des données :', error);
-      });
   }
 
 // Fonction de tri par catégorie
@@ -72,9 +68,6 @@ function trierParCategorie(categorie) {
         itemsContainer.appendChild(figure);
       });
     })
-    .catch(error => {
-      console.error('Erreur lors de la récupération des données :', error);
-    });
 }
 
 // Ajouter des écouteurs d'événements pour les boutons de tri
