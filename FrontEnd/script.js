@@ -20,12 +20,12 @@ fetch('http://localhost:5678/api/works/')
  // Récupérer le conteneur des éléments à trier
 const itemsContainer = document.querySelector('.gallery');
 
-function afficherToutesLesImages() {
+async function afficherToutesLesImages() {
     // Effacer les éléments actuels dans le conteneur
     itemsContainer.innerHTML = '';
   
     // Effectuer une requête Fetch pour obtenir toutes les données de l'API
-    fetch('http://localhost:5678/api/works/')
+    const response= await fetch('http://localhost:5678/api/works/')
       .then(response => response.json())
       .then(data => {
         // Parcourir tous les éléments et les ajouter au conteneur
@@ -44,12 +44,12 @@ function afficherToutesLesImages() {
   }
 
 // Fonction de tri par catégorie
-function trierParCategorie(categorie) {
+async function trierParCategorie(categorie) {
   // Effacer les éléments actuels dans le conteneur
   itemsContainer.innerHTML = '';
 
   // Effectuer une requête Fetch pour obtenir les données de l'API
-  fetch('http://localhost:5678/api/works/')
+  const response= await fetch('http://localhost:5678/api/works/')
     .then(response => response.json())
     .then(data => {
       // Filtrer les éléments en fonction de la catégorie sélectionnée
@@ -90,3 +90,7 @@ const hotelsBtn = document.createElement('button');
 hotelsBtn.textContent = 'Hotels & restaurants';
 hotelsBtn.addEventListener('click', () => trierParCategorie('Hotels & restaurants'));
 document.querySelector('.filters').appendChild(hotelsBtn);
+
+
+//mode edition activé si l'untilisateur est connecté//
+const log = document.querySelector(".log");

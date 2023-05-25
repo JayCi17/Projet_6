@@ -54,10 +54,60 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+
+/*Modification du css pour la banniere de la modale*/
+
+.editionBanner{
+	position: absolute;
+	left:0;
+	top:0;
+	padding:10px;
+	background:black;
+	width:100%;
+	display: flex;
+	justify-content: center;
+}
+
+.edition input{
+	background:#ffffff;
+	color:black;
+	padding:10px;
+	font-family: "Syne";
+	font-size:10px;
+	border-radius: 33px;
+}
+
+.edition{
+	align-self: center;
+	display:flex;
+	justify-content:space-between;
+	align-items: center;
+	width:25%;
+}
+
+.editionText{
+	color:white;
+	text-align: center;
+}
+
+.material-symbols-outlined{
+	color:white;
+}
+/*Fin de la banniere de la modale*/
+
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 80px 0
+}
+.log{
+	text-decoration: none;
+	color:black;
+}
+
+.log:hover{
+	color: #B1663C;
 }
 section {
 	margin: 50px 0
@@ -195,7 +245,7 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+.valider{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
