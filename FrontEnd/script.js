@@ -92,5 +92,26 @@ hotelsBtn.addEventListener('click', () => trierParCategorie('Hotels & restaurant
 document.querySelector('.filters').appendChild(hotelsBtn);
 
 
-//mode edition activé si l'untilisateur est connecté//
-const log = document.querySelector(".log");
+//mode edition activé si l'utilisateur est connecté//
+const log = document.querySelector('.log');
+const banner= document.querySelector('.editionBanner');
+
+function editionActive(){
+  if(localStorage.login){
+    log.innerText="logout",
+    banner.style= "display:flex;";
+  }
+  else{
+    banner.style="display:none;";
+  }
+};
+
+editionActive();
+
+//desactiver le mode avec logout//
+
+log.addEventListener("click",()=>{
+  localStorage.removeItem("login");
+  localStorage.removeItem("token");
+  log.innnerText="login";
+})
