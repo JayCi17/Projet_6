@@ -106,6 +106,7 @@ function editionActive(){
   else{
     banner.style="display:none;";
     modif.style="display:none;";
+    container.style="display:none";
 
   }
 };
@@ -117,5 +118,23 @@ editionActive();
 log.addEventListener("click",()=>{
   localStorage.removeItem("login");
   localStorage.removeItem("token");
-  log.innnerText="login";
+  log.innerText="login";
 })
+
+//ouverture de la fenetre modale au click sur le bouton dans la banniere//
+
+//on recupere le input dans le document qui va permettre d'ouvrir la fenetre//
+const edition=document.querySelector(".editionSubmit");
+//on recupère la fenetre que nous souhaitant ouvrir au click//
+const modal=document.querySelector(".modalContainer");
+//Nous ajoutons un evenement a l'input afin que le fenetre modale s'ouvre au click sur celui-ci//
+edition.addEventListener("click", function(event){
+  event.preventDefault();
+  console.log("clique sur le bouton");
+  modal.classList.add("modalOpen");
+});
+
+const close=document.querySelector(".close");
+close.addEventListener("click",function(){
+  modal.classList.remove("modalOpen");
+});
