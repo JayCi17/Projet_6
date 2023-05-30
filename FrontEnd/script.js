@@ -95,6 +95,8 @@ document.querySelector('.filters').appendChild(hotelsBtn);
 //mode edition activé si l'utilisateur est connecté//
 const log = document.querySelector('.log');
 const banner= document.querySelector('.editionBanner');
+const modif= document.querySelector(".change");
+const container = document.querySelector(".changingContainer");
 
 function editionActive(){
   if(localStorage.login){
@@ -103,6 +105,8 @@ function editionActive(){
   }
   else{
     banner.style="display:none;";
+    modif.style="display:none;";
+
   }
 };
 
