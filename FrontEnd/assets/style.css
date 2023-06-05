@@ -54,7 +54,7 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
-/*Modification css pour la fenetre modale*/
+/*Modification css pour la première fenetre modale*/
 .modalContainer {
 	display: none;
 	position: fixed;
@@ -95,11 +95,13 @@ body {
   }
   
   .title {
-	font-size: 20px;
+	font-size: 26px;
 	font-weight: bold;
+	font-family: "Work Sans";
   }
+
 .modalOpen{
-	display:block;
+	display: block;
 }
 /*Affichage des images dans la modale*/
 
@@ -177,6 +179,135 @@ body {
 	padding:4px;
   }
 
+  /*Modification de la deuxième fenetre modale*/
+ 
+  .modalContainer_2 {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 10000
+;
+  }
+
+  .modal_2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	background-color: #ffffff;
+	padding: 80px;
+  }
+
+  .arrow-back{
+	position: absolute;
+	top:10px;
+	left:10px;
+  }
+
+  .arrow-back .material-symbols-outlined{
+	color:black;
+  }
+
+  .newPicture{
+	background:#e8f1f6;
+	padding:20px 0 20px 0;
+	margin-top:40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  }
+
+  .newPicture .material-symbols-outlined{
+	color:#b9c5cc;
+	margin-bottom: 15px;
+	font-size: 150px;
+
+  }
+
+  .label-newPicture{
+	margin-left: auto;
+	margin-right: auto;
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	background:#cbd6dc;
+	color:#306685;
+	font-family: "Work Sans";
+	font-size:14px;
+	border-radius:33px;
+	width:35%;
+	padding:10px;
+
+  }
+
+  .input-newPicture{
+	visibility: hidden;
+  }
+  .format{
+	text-align: center;
+  }
+
+  /*Css du formulaire de la modale*/
+  .formModal-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+
+  .formModal label{
+	display: flex;
+	font-family: "Work sans";
+	font-size: 14px;
+	color:black;
+	line-height: 16px;
+	text-align: left;
+	margin-top:20px;
+	margin-bottom: 10px;
+	font-weight: 500;
+  }
+
+  .formModal input{
+	height:41px;
+	width:490px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+  }
+
+  .formModal select{
+	height: 41px;
+	width:490px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border:none;
+  }
+
+  .formModal .border{
+	margin-top: 40px;
+	width:490px;
+  }
+
+  .validate{
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	margin-top:30px;
+	background: #a7a7a7;
+	color:white;
+	border-radius: 33px;
+	font-family: "Syne";
+	font-size: 17px;
+	border:none;
+	padding:10px 90px 10px 90px;
+
+  }
+ .modalOpen2{
+	display: block;
+ }
 /*Modification du css pour la banniere de la modale*/
 
 .editionBanner{

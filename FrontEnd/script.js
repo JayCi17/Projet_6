@@ -120,13 +120,17 @@ log.addEventListener("click",()=>{
   log.innerText="login";
   localStorage.clear;
 })
-                                                                  //voir pour clear le localstorage//
-//ouverture de la fenetre modale au click sur le bouton dans la banniere//
 
-//on recupere le input dans le document qui va permettre d'ouvrir la fenetre//
+
+//ouverture de la fenetre modale au click //
+
+//on recupere les elements dans le document qui vont  permettre d'ouvrir la fenetre//
 const edition=document.querySelectorAll(".changeText");
+const addModal=document.querySelector(".openModale2");
 //on recupère la fenetre que nous souhaitant ouvrir au click//
 const modal=document.querySelector(".modalContainer");
+const modal2=document.querySelector(".modalContainer_2");
+
 //Nous ajoutons un evenement a l'input afin que le fenetre modale s'ouvre au click sur celui-ci//
 edition.forEach(function(element){
 element.addEventListener("click", function(event){
@@ -134,6 +138,12 @@ element.addEventListener("click", function(event){
   console.log("clique sur le bouton");
   modal.classList.add("modalOpen");
 });
+});
+
+addModal.addEventListener("click", function(){
+  console.log("la modale 2 va s'ouvrir");
+  modal2.classList.add("modalOpen2");
+  modal.classList.remove("modalOpen");
 });
 
 const close=document.querySelector(".close");
@@ -144,6 +154,7 @@ close.addEventListener("click",function(){
 //Ajouter les images a la fenetre modale//
 //Recuperer les données de l'API par un fetch//
 const imgContainer=document.querySelector(".imageContainer");
+const token=localStorage.token;
 
   fetch('http://localhost:5678/api/works/')
   .then(response=>response.json())
@@ -159,6 +170,7 @@ const imgContainer=document.querySelector(".imageContainer");
       const icon=document.createElement("img");
       icon.src="./assets/icons/trash.png";
       icon.classList.add("icon")
+      icon.id=`${work.id}`
       figure.appendChild(icon);
 
       if (index === 0){
@@ -173,7 +185,30 @@ const imgContainer=document.querySelector(".imageContainer");
       figure.appendChild(edit);
   
       imgContainer.appendChild(figure);
-  
+    })
+      //Supprimer image de la galerie//
+  const deleteElement=document.querySelectorAll(".icon");
+
+  deleteElement.forEach(element=>{
+    element.addEventListener("click",()=>{
+      deleteWorks(element.id);
+      console.log("supression activée");
     })
   });
+  });
+
+  //creation de la fonction deletWorks//
+
+  async function deleteWorks(id){
+    console.log(id);
+    //passage de la requete pour supprimer une image de la gallery//
+    const response = await fetch("http://" + window.location.hostname + `:5678/api/works/${id}`,{
+      method:"DELETE",
+      headers:{
+        accept:"*/*",
+        authorization:`Bearer ${token}`
+      }
+    });
+  }
+
 
