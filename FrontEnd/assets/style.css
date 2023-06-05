@@ -84,6 +84,7 @@ body {
 	border: none;
 	cursor: pointer;
 	color:black;
+	cursor: pointer;
   }
 
   .close .material-symbols-outlined{
@@ -207,6 +208,7 @@ body {
 	position: absolute;
 	top:10px;
 	left:10px;
+	cursor: pointer;
   }
 
   .arrow-back .material-symbols-outlined{

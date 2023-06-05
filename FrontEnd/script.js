@@ -146,10 +146,21 @@ addModal.addEventListener("click", function(){
   modal.classList.remove("modalOpen");
 });
 
-const close=document.querySelector(".close");
-close.addEventListener("click",function(){
-  modal.classList.remove("modalOpen");
+const close=document.querySelectorAll(".close");
+
+close.forEach(function(element){
+  element.addEventListener("click",function(){
+    modal.classList.remove("modalOpen");
+    modal2.classList.remove("modalOpen2")
+  });
 });
+
+const arrowBack=document.querySelector(".arrow-back");
+arrowBack.addEventListener("click",function(){
+  modal.classList.add("modalOpen");
+  modal2.classList.remove("modalOpen2");
+});
+
 
 //Ajouter les images a la fenetre modale//
 //Recuperer les données de l'API par un fetch//
