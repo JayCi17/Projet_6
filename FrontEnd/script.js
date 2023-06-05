@@ -91,7 +91,6 @@ hotelsBtn.textContent = 'Hotels & restaurants';
 hotelsBtn.addEventListener('click', () => trierParCategorie('Hotels & restaurants'));
 document.querySelector('.filters').appendChild(hotelsBtn);
 
-
 //mode edition activé si l'utilisateur est connecté//
 const log = document.querySelector('.log');
 const banner= document.querySelector('.editionBanner');
@@ -119,22 +118,62 @@ log.addEventListener("click",()=>{
   localStorage.removeItem("login");
   localStorage.removeItem("token");
   log.innerText="login";
+  localStorage.clear;
 })
-
+                                                                  //voir pour clear le localstorage//
 //ouverture de la fenetre modale au click sur le bouton dans la banniere//
 
 //on recupere le input dans le document qui va permettre d'ouvrir la fenetre//
-const edition=document.querySelector(".editionSubmit");
+const edition=document.querySelectorAll(".changeText");
 //on recupère la fenetre que nous souhaitant ouvrir au click//
 const modal=document.querySelector(".modalContainer");
 //Nous ajoutons un evenement a l'input afin que le fenetre modale s'ouvre au click sur celui-ci//
-edition.addEventListener("click", function(event){
+edition.forEach(function(element){
+element.addEventListener("click", function(event){
   event.preventDefault();
   console.log("clique sur le bouton");
   modal.classList.add("modalOpen");
+});
 });
 
 const close=document.querySelector(".close");
 close.addEventListener("click",function(){
   modal.classList.remove("modalOpen");
 });
+
+//Ajouter les images a la fenetre modale//
+//Recuperer les données de l'API par un fetch//
+const imgContainer=document.querySelector(".imageContainer");
+
+  fetch('http://localhost:5678/api/works/')
+  .then(response=>response.json())
+  .then(data=>{
+    data.forEach((work, index)=>{
+      const figure = document.createElement("figure");
+  
+      const imageModale= document.createElement("img");
+      imageModale.src=work.imageUrl;
+      figure.appendChild(imageModale);
+      imageModale.classList.add("image-modale");
+
+      const icon=document.createElement("img");
+      icon.src="./assets/icons/trash.png";
+      icon.classList.add("icon")
+      figure.appendChild(icon);
+
+      if (index === 0){
+        const addIcon=document.createElement("img");
+        addIcon.src="./assets/icons/crossArrow.png";
+        addIcon.classList.add("crossarrow");
+        figure.appendChild(addIcon);
+      }
+  
+      const edit = document.createElement('figcaption');
+      edit.innerText="éditer";
+      figure.appendChild(edit);
+  
+      imgContainer.appendChild(figure);
+  
+    })
+  });
+
