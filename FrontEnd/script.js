@@ -127,7 +127,7 @@ log.addEventListener("click",()=>{
 //ouverture de la fenetre modale au click //
 
 //on recupere les elements dans le document qui vont  permettre d'ouvrir la fenetre//
-const edition=document.querySelectorAll(".changeText");
+const edition=document.querySelectorAll(".newEdit");
 const addModal=document.querySelector(".openModale2");
 //on recupère la fenetre que nous souhaitant ouvrir au click//
 const modal=document.querySelector(".modalContainer");
@@ -275,6 +275,7 @@ function addPicture(){
       formData.append("category", inputCategory);
       console.log(formData);
       newDataSubmit(formData);
+      modalOpen=true;
 
       function newDataSubmit(formData){
         try{
@@ -289,7 +290,6 @@ function addPicture(){
           const dataResponse=response.json();
           console.log(dataResponse);
           itemsContainer.innerHTML="";
-          afficherToutesLesImages();
         }
         catch (error){
           console.log("il y a eu une erreur sur le fetch");
