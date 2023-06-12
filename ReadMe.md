@@ -19,7 +19,7 @@ Les utilisateurs connectés peuvent supprimer des projets existants de la galeri
 
 ## Technologie utilisées
 
-* ![logo html](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imedias.pro%2Fcours-en-ligne%2Fweb-internet%2Fpage-web-page-internet%2Flangage-programmation-web%2F&psig=AOvVaw1djgbsmM09RAS-WzLxkPS4&ust=1686662185470000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIiRorXovf8CFQAAAAAdAAAAABAE)
+* ![logo html](https://www.pikpng.com/pngl/m/150-1506141_html-css-and-javascript-logo-html5-css3-js.png)
 * __Fetch API__ :  
 Utilisé pour effectuer des requêtes HHTP vers l'API et récupérer les données des projets.
 * __Local Storage__ :  
