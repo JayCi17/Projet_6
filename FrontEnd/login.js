@@ -12,15 +12,15 @@ async function identification(){
     const password = document.getElementById("password").value;
     try{
         //envoie de la requete POST à l'api avec la methode fetch
-    const response= await fetch("http://"+ window.location.hostname +":5678/api/users/login", {
+    const response= await fetch("http://localhost:5678/api/users/login", {
         method:"POST",
         headers:{
             "Content-Type":"application/json",
-            "accept": "application/json",
+             accept: "application/json",
         },
         body: JSON.stringify({
-            "email": mail,
-            "password" : password
+            email: mail,
+            password : password
         }),
     })
 //Si l'indentification est réussie on renvoie à la page index
@@ -41,7 +41,8 @@ async function identification(){
 }
     //Si une erreur se produit elle est affichée dans la console
     catch (e) {
-        console.log(e);
+        console.error("An error occurred",e);
+        console.error("Error message", e.message);
     }
 
 };
