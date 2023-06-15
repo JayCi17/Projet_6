@@ -19,7 +19,7 @@ Les utilisateurs connectés peuvent supprimer des projets existants de la galeri
 
 ## Technologie utilisées
 
-* ![logo html](https://www.pikpng.com/pngl/m/150-1506141_html-css-and-javascript-logo-html5-css3-js.png)
+* ![logo html](https://www.pikpng.com/pngl/m/150-1506141_html-css-and-javascript-logo-html5-css3-js.pnggit push)
 * __Fetch API__ :  
 Utilisé pour effectuer des requêtes HHTP vers l'API et récupérer les données des projets.
 * __Local Storage__ :  
