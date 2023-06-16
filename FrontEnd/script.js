@@ -216,17 +216,58 @@ fetch("http://localhost:5678/api/works/")
 
 //creation de la fonction deletWorks//
 
-async function deleteWorks(id) {
-  console.log(id);
-  //passage de la requete pour supprimer une image de la gallery//
-  const response = await fetch(`http://localhost:5678/api/works/${id}`,{
+// Fonction pour mettre à jour la galerie principale
+async function updateGallery() {
+  try {
+    const response = await fetch("http://localhost:5678/api/works/");
+    const data = await response.json();
+
+    // Effacer les éléments actuels dans la galerie
+    gallery.innerHTML = "";
+
+    // Parcourir les données et ajouter les images à la galerie
+    data.forEach((work) => {
+      const figure = document.createElement("figure");
+      const image = document.createElement("img");
+      image.src = work.imageUrl;
+      const caption = document.createElement("figcaption");
+      caption.textContent = work.title;
+
+      figure.appendChild(image);
+      figure.appendChild(caption);
+      gallery.appendChild(figure);
+    });
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour de la galerie", error);
+  }
+}
+
+// Fonction pour supprimer une image
+async function deleteWorks(workId) {
+  try {
+    const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
       method: "DELETE",
       headers: {
         accept: "*/*",
-        authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
+    });
+
+    if (response.ok) {
+      // Supprimer l'élément de la galerie principale
+      const galleryItem = document.querySelector(`[data-work-id="${workId}"]`);
+      if (galleryItem) {
+        galleryItem.remove();
+      }
+
+      // Mettre à jour la galerie principale
+      await updateGallery();
+    } else {
+      console.error("Erreur lors de la suppression de l'image");
     }
-  );
+  } catch (error) {
+    console.error("Erreur lors de la requête de suppression", error);
+  }
 }
 
 
@@ -309,6 +350,7 @@ function addPicture() {
       figure.appendChild(image);
       figure.appendChild(caption);
       imgContainer.appendChild(figure);
+      afficherToutesLesImages();
           // Ajouter l'image à la galerie sans rechargement de la page  
         } catch (error) {
           console.log("il y a eu une erreur sur le fetch");
@@ -326,4 +368,3 @@ editionSubmitBtn.addEventListener("click", function () {
   // Rafraîchir la page
   location.reload();
 });
-
